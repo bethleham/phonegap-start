@@ -1,54 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
-        <link href="css/kendo.common.min.css" rel="stylesheet" />
-        <link href="css/kendo.default.min.css" rel="stylesheet" />
-        <link href="css/kendo.mobile.all.min.css" rel="stylesheet" />
-        <script src="js/jquery.min.js"></script>
-        <script src="js/kendo.all.min.js"></script>
-        <style>
-            #forms input:not([type=checkbox]):not([type=radio]),
-            #forms select,
-            #forms .k-dropdown
-            {
-                -webkit-box-sizing: border-box;
-                box-sizing: border-box;
-                width: 50%;
+        <title>Acceleration Example</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" charset="utf-8" src="cordova.2.8.0.js"></script>
+        <script type="text/javascript" >
+            
+            function onSuccess(acceleration){
+                alert(  'Accelaration X ' + acceleration.x + '\n' +
+                        'Accelaration Y ' + acceleration.y + '\n' +
+                        'Accelaration Z ' + acceleration.z + '\n' +
+                        'TimeStamp  ' + acceleration.timestamp + '\n' );
             }
-        </style>
-
+            
+            function onError(){
+                alert('Accelerometer Error');
+            }
+            
+            //When coredova is ready
+            function onDeviceReady(){
+                navigator.accelerometer.getCurrentAccleration(onSuccess, onError);
+            }
+            
+            // wait for cordova to load
+            document.addEventListener('deviceready', onDeviceReady, false);
+            //coredova is ready
+            
+            
+        </script>
     </head>
     <body>
-        <div id="forms" data-role="view" data-title="Form Elements" data-init="initForm" data-use-native-scrolling="true">
-            <form action="./index.html">
-                <ul data-role="listview" data-style="inset">
-                    <li>
-                        <label>User Name
-                            <input type="text" value="Text" />
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            Password
-                            <input type="password" value="password" />
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            Type search
-                            <input type="button" value="save" />
-                        </label>
-                    </li>
-                </ul>
-            </form>
+        <div>
+            <h1>Example</h1>
+            <p>getCurrentAcceleration</p>
         </div>
-
-
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
     </body>
 </html>

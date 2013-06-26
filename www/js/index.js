@@ -27,8 +27,8 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        alert("Before adding event listener");
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        alert("Before adding event listener");
     },
     // deviceready Event Handler
     //
@@ -47,5 +47,5 @@ var app = {
     onError: function() {// Failed to get the acceleration
         alert('Accelerometer Error');
     }
-    
+
 };

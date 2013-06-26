@@ -19,6 +19,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
+        alert("application Initialised");
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -33,17 +34,16 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+        navigator.accelerometer.getCurrentAccleration(onSuccess, onError);
     },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+    onSuccess: function(acceleration) {//success fully got the acceleration 
+        alert('Accelaration X ' + acceleration.x + '\n' +
+                'Accelaration Y ' + acceleration.y + '\n' +
+                'Accelaration Z ' + acceleration.z + '\n' +
+                'TimeStamp  ' + acceleration.timestamp + '\n');
+    },
+    onError: function() {// Failed to get the acceleration
+        alert('Accelerometer Error');
     }
+    
 };

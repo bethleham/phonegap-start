@@ -3,37 +3,16 @@
     <head>
         <title>Acceleration Example</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-        <script type="text/javascript" >
-
-            // wait for cordova to load
-            document.addEventListener('deviceready', onDeviceReady, false);
-            //coredova is ready
-            
-            //When coredova is ready
-            function onDeviceReady(){
-                navigator.accelerometer.getCurrentAccleration(onSuccess, onError);
-            }
-            
-            
-            function onSuccess(acceleration){
-                alert(  'Accelaration X ' + acceleration.x + '\n' +
-                        'Accelaration Y ' + acceleration.y + '\n' +
-                        'Accelaration Z ' + acceleration.z + '\n' +
-                        'TimeStamp  ' + acceleration.timestamp + '\n' );
-            }
-            
-            function onError(){
-                alert('Accelerometer Error');
-            }
-            
-            
-        </script>
+        <script type="text/javascript" charset="utf-8" src="cordova-2.8.0.js"></script>
+        <script type="text/javascript" charset="utf-8" src="index.js"></script>
     </head>
     <body>
         <div>
             <h1>Example</h1>
             <p>getCurrentAcceleration</p>
         </div>
+        <script type="text/javascript" >
+            app.initialize();
+        </script>
     </body>
 </html>

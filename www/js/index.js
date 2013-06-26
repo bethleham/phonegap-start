@@ -27,6 +27,7 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
+        alert("Before adding event listener");
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
@@ -34,7 +35,8 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        navigator.accelerometer.getCurrentAccleration(onSuccess, onError);
+        alert("Before calling the device ready function");
+        navigator.accelerometer.getCurrentAccleration(this.onSuccess, this.onError);
     },
     onSuccess: function(acceleration) {//success fully got the acceleration 
         alert('Accelaration X ' + acceleration.x + '\n' +

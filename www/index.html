@@ -9,13 +9,15 @@
             // Wait for Cordova to load
 
             var app = {
+                
+                self : this,
                 init: function() {
-                    document.addEventListener("deviceready", this.onDeviceReady, false);
+                    document.addEventListener("deviceready", self.onDeviceReady, false);
                 },
                 // Cordova is ready
                 //
                 onDeviceReady: function() {
-                    navigator.accelerometer.getCurrentAcceleration(this.onSuccess, this.onError);
+                    navigator.accelerometer.getCurrentAcceleration(self.onSuccess, self.onError);
                 },
                 // onSuccess: Get a snapshot of the current acceleration
                 //

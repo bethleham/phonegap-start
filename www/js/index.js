@@ -29,7 +29,7 @@ var app = {
             document.addEventListener('deviceready', this.onDeviceReady, false);
         },
         onDeviceReady: function() {
-            navigator.accelerometer.getCurrentAccleration(app.onSuccess, app.onError);
+            navigator.accelerometer.getCurrentAcceleration(this.onSuccess, this.onError);
             alert("accelerometer called");
         },
         onSuccess: function(acceleration) {//success fully got the acceleration 

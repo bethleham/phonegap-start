@@ -17,35 +17,33 @@
  * under the License.
  */
 var app = {
-    // Application Constructor
-    initialize: function() {
-        alert("application Initialised");
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-        alert("Before adding event listener");
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        alert("Before calling the device ready function");
-        navigator.accelerometer.getCurrentAccleration(this.onSuccess, this.onError);
-    },
-    onSuccess: function(acceleration) {//success fully got the acceleration 
-        alert('Accelaration X ' + acceleration.x + '\n' +
-                'Accelaration Y ' + acceleration.y + '\n' +
-                'Accelaration Z ' + acceleration.z + '\n' +
-                'TimeStamp  ' + acceleration.timestamp + '\n');
-    },
-    onError: function() {// Failed to get the acceleration
-        alert('Accelerometer Error');
-    }
-
+    // Application Constructor  
+        initialize: function() {
+            this.bindEvents();
+        },
+        // Bind Event Listeners
+        //
+        // Bind any events that are required on startup. Common events are:
+        // 'load', 'deviceready', 'offline', and 'online'.
+        bindEvents: function() {
+            document.addEventListener('deviceready', app.onDeviceReady, false);
+        },
+        // deviceready Event Handler
+        //
+        // The scope of 'this' is the event. In order to call the 'receivedEvent'
+        // function, we must explicity call 'app.receivedEvent(...);'
+        onDeviceReady: function() {
+            navigator.accelerometer.getCurrentAccleration(app.onSuccess, app.onError);
+            alert("accelerometer called");
+        },
+        onSuccess: function(acceleration) {//success fully got the acceleration 
+            alert('Accelaration X ' + acceleration.x + '\n' +
+                    'Accelaration Y ' + acceleration.y + '\n' +
+                    'Accelaration Z ' + acceleration.z + '\n' +
+                    'TimeStamp  ' + acceleration.timestamp + '\n');
+        },
+        onError: function() {// Failed to get the acceleration
+            alert('Accelerometer Error');
+        }
+    
 };
